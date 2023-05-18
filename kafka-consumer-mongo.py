@@ -8,7 +8,8 @@ from pymongo.server_api import ServerApi
 
 import json
 
-uri = "mongodb+srv://adsoft:adsoft-sito@cluster0.kzghgph.mongodb.net/?retryWrites=true&w=majority"
+uri = 'mongodb+srv://leiferTorres:h7D7B1EhlJQxgub7@cluster0.07nwh.mongodb.net/dbapi?retryWrites=true&w=majority'
+
 
 # Create a new client and connect to the server
 #client = MongoClient(uri, server_api=ServerApi('1'))
@@ -23,7 +24,7 @@ uri = "mongodb+srv://adsoft:adsoft-sito@cluster0.kzghgph.mongodb.net/?retryWrite
 # Connect to MongoDB and pizza_data database
 
 try:
-    client = MongoClient(uri, server_api=ServerApi('1'))
+    client = MongoClient(uri)
     client.admin.command('ping')
     print("Pinged your deployment. You successfully connected to MongoDB!")
 
@@ -32,7 +33,7 @@ try:
 except:
     print("Could not connect to MongoDB")
 
-consumer = KafkaConsumer('test',bootstrap_servers=['my-kafka-0.my-kafka-headless.kafka-adsoftsito.svc.cluster.local:9092'])
+consumer = KafkaConsumer('test',bootstrap_servers=['my-kafka-0.my-kafka-headless.emilianotorres123.svc.cluster.local:9092'])
 # Parse received data from Kafka
 for msg in consumer:
     record = json.loads(msg.value)
